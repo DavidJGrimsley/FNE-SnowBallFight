@@ -22,6 +22,7 @@ round_device := class(creative_device) :
         
     OnPlayerEliminated(Agent: agent) : void =
         PlayerList := GetPlayspace().GetPlayers()    
+        set PlayerCount = PlayerList.Length
         if (PlayerCount = PlayerList.Length):
 
             Print("{PlayerCount}")

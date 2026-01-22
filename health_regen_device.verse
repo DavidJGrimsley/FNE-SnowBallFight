@@ -58,8 +58,10 @@ health_regen_device := class(creative_device):
                 # Get the health of the Fortnite character and make sure it is not full
                 if(FC.GetHealth() < FC.GetMaxHealth()):    
                     # Store current health plus regen rate variable in a new constant
-                    NewHealth := FC.GetHealth() + HealthRegenRate
+                    var NewHealth:float = FC.GetHealth() + HealthRegenRate
+                    if (NewHealth > FC.GetMaxHealth()):
+                        set NewHealth = FC.GetMaxHealth()
                     # Set the player's health to the new health
                     FC.SetHealth(NewHealth)
-                    # Wait for the cooldown period
-                    Sleep(Cooldown)
+                # Wait for the cooldown period
+                Sleep(Cooldown)
